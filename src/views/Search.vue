@@ -35,7 +35,7 @@ export default {
 			const encodedQuery = this.query.replaceAll(' ', '%20') // replaces spaces with %20 (+ does not work!)
 
 			try {
-				const response = await axios.get(`http://hn.algolia.com/api/v1/search?query=${encodedQuery}`)
+				const response = await axios.get(`https://hn.algolia.com/api/v1/search?query=${encodedQuery}`)
 				this.results = response.data.hits
 				this.resultsFound = response.data.nbHits
 			}
