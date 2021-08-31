@@ -7,6 +7,9 @@ export default new Vuex.Store({
 	state: {
 		pastSearches: []
 	},
+	getters: {
+		lastSearch: state => state.pastSearches[state.pastSearches.length - 1]
+	},
 	mutations: {
 		addQuery (state, query) {
 			state.pastSearches.push(query)

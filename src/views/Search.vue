@@ -15,6 +15,7 @@
 import axios from 'axios'
 import SearchField from '../components/SearchField.vue'
 import { debounce } from '../helpers'
+import { mapGetters } from 'vuex'
 
 export default {
 	name: 'Search',
@@ -56,6 +57,15 @@ export default {
 				this.dirtyField = true
 			}
 		}, 500)
+	},
+	computed: {
+		...mapGetters(['lastSearch'])
+	},
+	mounted: function () {
+		// if a query was previously made, repeat that query instead of showing a blank page
+		if (this.lastSearch) {
+			this.query = this.lastSearch.query
+		}
 	}
 }
 </script>
